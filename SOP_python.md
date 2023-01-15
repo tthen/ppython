@@ -46,7 +46,7 @@ At this point, you have a virtual environment, but you haven't started using it.
 
 In Windows
 
-> source venv39/Scripts/activate
+> venv39/Scripts/activate
 
 In Linux, WSL or macOS
 
