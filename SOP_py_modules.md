@@ -296,6 +296,73 @@ All projects should have the following four major sections to help you focus you
 - Explanations: Technical descriptions of the machinery and how to operate it (key classes, functions, APIs, and so forth). Think Encyclopedia article.
 
 
+### Recomendations
+
+If that backslash seems too mysterious or a bit fragile, you could use the string strip method instead:
+
+```
+basho = """
+in the twilight rain
+these brilliant-hued hibiscus
+a lovely sunset
+""".strip("\n")
+```
+
+To avoid indenting each line of your string, you could write it like this:
+
+
+```
+def copyright():
+    print(
+        """
+Copyright (c) 1991-2000 ACME Corp
+All Rights Reserved.
+        """.strip("\n")
+    )
+```
+
+Instead, I usually recommend using the `dedent` function from Python's `textwrap` module:
+
+```
+from textwrap import dedent
+
+def copyright():
+    print(dedent(
+        """
+        Copyright (c) 1991-2000 ACME Corp
+        All Rights Reserved.
+        """.strip("\n")
+    ))
+```
+
+Don't forget the string format method
+
+Multi-line strings are one of the few times that I reach for the string format method anymore. Python's f-strings are great, but the string format method can still come in handy sometimes.
+
+Here's an f-string embedded within a function:
+
+```
+def copyright(year, company):
+    print(dedent(f"""
+        Copyright (c) {year} {company}
+        All Rights Reserved.
+    """.strip("\n")))
+```
+
+Here's the same code using a template string stored at the top-level of our module and the string format method used within our function:
+
+```
+copyright_template = """
+Copyright (c) {year} {company}
+All Rights Reserved.
+""".strip("\n")
+
+def copyright(year, company):
+    print(copyright_template.format(year=year, company=company))
+```
+
+The string format method can still come in handy for those rare times when you'd like to separate the definition of your template string from the injection of variables into that string.
+
 
 ## References
 
