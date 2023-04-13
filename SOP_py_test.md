@@ -1,3 +1,9 @@
+<!--  https://github.com/gutfeeling/univariate-linear-regression 
+This repository holds the code for the DataCamp course Unit Testing for Data Science in Python by Dibya Chakravorty.
+https://app.datacamp.com/learn/courses/unit-testing-for-data-science-in-python
+Please make sure that you have installed the package univariate_linear_regression in this repo using pip before running pytest. Otherwise, you may get ImportErrors.
+-->
+
 ## Write unit tests before implementation!
 
 - Unit tests cannot be deprioritized.
