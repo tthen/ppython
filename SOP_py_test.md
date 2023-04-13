@@ -242,3 +242,104 @@ collected 6 items
 test_convert_to_int.py ...... [100%]
 =========================== 6 passed in 0.03 seconds ===========================
 ```
+
+
+## Structuring tests inside test modules
+
+- Test module: `test_preprocessing_helpers.py`
+
+```
+import pytest
+from data.preprocessing_helpers import row_to_list, convert_to_int
+
+def test_on_no_tab_no_missing_value(): # A test for row_to_list()
+  ...
+
+def test_on_two_tabs_no_missing_value(): # Another test for row_to_list()
+  ...
+
+...
+
+def test_with_no_comma(): # A test for convert_to_int()
+  ...
+
+def test_with_one_comma(): # Another test for convert_to_int()
+  ...
+
+...
+```
+
+### Test class: theoretical structure
+
+- Test module: `test_preprocessing_helpers.py`
+
+
+```
+import pytest
+from data.preprocessing_helpers import row_to_list, convert_to_int
+
+class TestRowToList(object):                         # Always put the argument object
+
+  def test_on_no_tab_no_missing_value(self):         # Always put the argument self
+    ...
+
+  def test_on_two_tabs_no_missing_value(self):       # Always put the argument self
+    ...
+```
+
+
+### Clean separation
+
+- Test module: `test_preprocessing_helpers.py`
+
+
+```
+import pytest
+from data.preprocessing_helpers import row_to_list, convert_to_int
+
+class TestRowToList(object):                         # Always put the argument object
+
+  def test_on_no_tab_no_missing_value(self):         # Always put the argument self
+    ...
+
+  def test_on_two_tabs_no_missing_value(self):       # Always put the argument self
+    ...
+
+
+class TestConvertToInt(object):                      # Test class for convert_to_int()
+
+  def test_with_no_comma(self):                      # A test for convert_to_int()
+    ...
+
+  def test_with_one_comma(self):                     # Another test for convert_to_int()
+    ...
+
+
+```
+
+
+### Final test directory structure
+
+```
+src/                                # All application code lives here
+|-- data/                           # Package for data preprocessing
+| |-- __init__.py
+| |-- preprocessing_helpers.py      # Contains row_to_list(), convert_to_int()
+|-- features/                       # Package for feature generation from preprocessed data
+| |-- __init__.py
+| |-- as_numpy.py                   # Contains get_data_as_numpy_array()
+|-- models/                         # Package for training/testing linear regression model
+| |-- __init__.py
+| |-- train.py                      # Contains split_into_training_and_testing_sets()
+tests/                              # Test suite: all tests live here
+|-- data/
+| |-- __init__.py
+| |-- test_preprocessing_helpers.py # Contains TestRowToList, TestConvertToInt
+|-- features/
+| |-- __init__.py
+| |-- test_as_numpy.py              # Contains TestGetDataAsNumpyArray
+|-- models/
+|-- __init__.py
+|-- test_train.py                   # Contains TestSplitIntoTrainingAndTestingSets
+```
+
