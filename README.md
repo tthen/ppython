@@ -43,3 +43,11 @@ Por ejemplo, se debe poder hacer:
 ●      U$S 1 * 10
 
 ●      U$S 10 / 2
+
+
+
+#### HarvardX: CS50's Web Programming with Python and JavaScript
+
+[HarvardX: CS50's Web Programming with Python and JavaScript](https://www.edx.org/learn/web-development/harvard-university-cs50-s-web-programming-with-python-and-javascript?irclickid=35HXdwxvKxyPWJWUS5TJ82YBUkFShLRG-xoNxw0&irgwc=1)
+
+This course picks up where CS50 leaves off, diving more deeply into the design and implementation of web apps with Python, JavaScript, and SQL using frameworks like Django, React, and Bootstrap.
